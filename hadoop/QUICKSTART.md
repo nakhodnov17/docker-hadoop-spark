@@ -23,4 +23,20 @@ Copy breweries.csv to HDFS:
   hdfs dfs -put breweries.csv /data/openbeer/breweries/breweries.csv
 ```
 
-## Word count
+## Word count with Hadoop Streaming
+
+Move code and data to hadoop server
+```shell
+  docker cp examples/wordcount_streaming namenode:/
+```
+
+Go to the bash shell on the namenode with that same Container ID of the namenode:
+```shell
+  docker exec -it namenode bash
+```
+
+Start hadoop streaming script:
+```shell
+  cd wordcount_streaming
+  sh run_hadoop.sh
+```
