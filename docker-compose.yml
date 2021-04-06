@@ -112,6 +112,7 @@ services:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
     ports:
       - "10000:10000"
+      - "10002:10002"
 
   hive-metastore:
     image: hive:2.3.2-postgresql-metastore
