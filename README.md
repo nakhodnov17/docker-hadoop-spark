@@ -40,7 +40,7 @@ Run `docker network inspect` on the network (e.g. `docker-hadoop-spark-hive_defa
 * `Hive`: `localhost:10002`
 
 
-You can add hosts mapping in your `hosts` file (`C:/Windows/System32/drivers/etc/hosts` on Windows, `/etc/hosts` on Linux) to resolve links correctly:
+You can add hosts mapping in your `hosts` file (`C:/Windows/System32/drivers/etc/hosts` on Windows, `/etc/hosts` on Linux) to resolve Web UI links correctly:
 ```text
 localhost datanode
 localhost namenode
@@ -55,6 +55,23 @@ There some examples how to work on a server using:
 * [Hadoop](hadoop/QUICKSTART.md)
 * [Spark](spark/QUICKSTART.md)
 * [Hive](hive/QUICKSTART.md)
+
+Note, that on Hive startup multiple exceptions like this will occur, but it seems it does not affect anything.
+```
+Exception in thread "org.apache.hadoop.hive.common.JvmPauseMonitor$Monitor@306681ba" java.lang.IllegalAccessError: tried to access method com.google.common.base.Stopwatch.<init>()V from class org.apache.hadoop.hive.common.JvmPauseMonitor$Monitor
+hive-metastore               |  at org.apache.hadoop.hive.common.JvmPauseMonitor$Monitor.run(JvmPauseMonitor.java:176)
+hive-metastore               |  at java.lang.Thread.run(Thread.java:748)
+```
+
+## Server shutdown
+To shutdown server execute:
+```shell
+docker-compose down
+```
+To remove volumes:
+```shell
+docker volume prune
+```
 
 ## Configure Environment Variables
 
