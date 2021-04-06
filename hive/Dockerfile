@@ -1,9 +1,8 @@
-FROM hadoop-base:2.0.0-hadoop3.2.1-java8
-
-MAINTAINER Yiannis Mouchakis <gmouchakis@iit.demokritos.gr>
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+FROM maksim64/hadoop-base:3.2.1
 
 ENV HIVE_VERSION 2.3.8
+ENV POSTGRES_VERSION 42.2.19
+
 ENV HIVE_HOME /opt/hive
 ENV PATH $HIVE_HOME/bin:$PATH
 ENV HADOOP_HOME /opt/hadoop-$HADOOP_VERSION
@@ -16,7 +15,7 @@ RUN apt-get update && apt-get install -y wget procps
 RUN wget http://apache.mirror.digionline.de/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
 RUN tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz
 RUN mv apache-hive-$HIVE_VERSION-bin hive
-RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.19.jar -O $HIVE_HOME/lib/postgresql-jdbc.jar
+RUN wget https://jdbc.postgresql.org/download/postgresql-$POSTGRES_VERSION.jar -O $HIVE_HOME/lib/postgresql-jdbc.jar
 RUN rm apache-hive-$HIVE_VERSION-bin.tar.gz && \
 	apt-get --purge remove -y wget && \
 	apt-get clean && \

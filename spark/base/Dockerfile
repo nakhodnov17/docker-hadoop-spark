@@ -1,12 +1,11 @@
 FROM alpine:3.10
 
-LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
-
 ENV ENABLE_INIT_DAEMON true
 ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
 ENV INIT_DAEMON_STEP spark_master_init
 
 ENV SPARK_VERSION=3.1.1
+# Note: here I do not specify hadoop minor version to in order to mimic naming from archive.apache.org/dist/spark
 ENV HADOOP_VERSION=3.2
 
 COPY wait-for-step.sh /

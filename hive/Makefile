@@ -1,3 +1,3 @@
-current_branch := $(shell git rev-parse --abbrev-ref HEAD)
+build_tag := 2.3.8
 build:
-	docker build -t hive:$(current_branch) ./
+	docker build -t maksim64/hive:$(build_tag) ./

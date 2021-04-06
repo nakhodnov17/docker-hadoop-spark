@@ -1,6 +1,4 @@
-FROM spark-base:3.1.1-hadoop3.2
-
-LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
+FROM maksim64/spark-base:3.1.1
 
 ENV SPARK_MASTER_NAME spark-master
 ENV SPARK_MASTER_PORT 7077
