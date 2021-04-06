@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
 import sys
+import regex
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
     # remove leading and trailing whitespace
-    line = line.strip()
+    line = line.strip().lower()
+    line = regex.sub(r'[\P{L}]', ' ', line)
     # split the line into words
     words = line.split()
     # increase counters
@@ -15,17 +17,5 @@ for line in sys.stdin:
         # Reduce step, i.e. the input for reducer.py
         #
         # tab-delimited; the trivial word count is 1
-        print('%s\t%s' % (word, 1))
-
-# #!/usr/bin/python
-#
-# import sys
-# # import regex
-#
-# for line in sys.stdin:
-#     pass
-# #     line = line.strip().lower()
-# #     line = regex.sub(r'[\P{L}]', ' ', line)
-# #     for token in line.split():
-# #         if token != ' ':
-# #             sys.stdout.write(f'{token} 1\n')
+        if word != ' ':
+            print('%s\t%s' % (word, 1))

@@ -2,9 +2,9 @@
 
 import sys
 
-current_word = None
-current_count = 0
 word = None
+current_count = 0
+current_word = None
 
 # input comes from STDIN
 for line in sys.stdin:
@@ -20,6 +20,7 @@ for line in sys.stdin:
     except ValueError:
         # count was not a number, so silently
         # ignore/discard this line
+        sys.stderr.write(f'Illegel value: {count}')
         continue
 
     # this IF-switch only works because Hadoop sorts map output
@@ -36,16 +37,3 @@ for line in sys.stdin:
 # do not forget to output the last word if needed!
 if current_word == word:
     print('%s\t%s' % (current_word, current_count))
-
-# #!/usr/bin/python
-#
-# import sys
-#
-# # current_key, current_count = None, 0
-# # for line in sys.stdin:
-# #     key, value = line.strip().split(' ')
-# #     if current_key != key:
-# #         if current_key is not None:
-# #             sys.stdout.write(f'{current_key} {current_count}\n')
-# #         current_key, current_count = key, 0
-# #     current_count += 1
