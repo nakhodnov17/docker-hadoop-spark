@@ -1,6 +1,6 @@
-FROM postgres:9.5.3
+FROM postgres:13.2
 
-MAINTAINER "Ivan Ermilov <ivan.s.ermilov@gmail.com>"
+ENV POSTGRES_HOST_AUTH_METHOD "trust"
 
 COPY hive-schema-2.3.0.postgres.sql /hive/hive-schema-2.3.0.postgres.sql
 COPY hive-txn-schema-2.3.0.postgres.sql /hive/hive-txn-schema-2.3.0.postgres.sql

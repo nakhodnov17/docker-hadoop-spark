@@ -1,4 +1,4 @@
-FROM debian:9
+FROM ubuntu:20.04
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       openjdk-8-jdk \
@@ -7,8 +7,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
       netcat \
       gnupg \
       libsnappy-dev \
+      python3.8 \
+      python3-pip \
     && rm -rf /var/lib/apt/lists/*
-      
+
+ADD requirements.txt /requirements.txt
+RUN pip3 install -r /requirements.txt
+
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
