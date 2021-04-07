@@ -42,6 +42,8 @@ Run `docker network inspect` on the network (e.g. `docker-hadoop-spark-hive_defa
 
 You can add hosts mapping in your `hosts` file (`C:/Windows/System32/drivers/etc/hosts` on Windows, `/etc/hosts` on Linux) to resolve Web UI links correctly:
 ```text
+<localhost-ip> localhost
+
 localhost datanode
 localhost namenode
 localhost nodemanager
@@ -71,6 +73,14 @@ docker-compose down
 To remove volumes:
 ```shell
 docker volume prune
+```
+
+If you use Docker for Windows with WSL2 backend your need to clear memory:
+```shell
+wsl -d docker-desktop -e "echo 1 > /proc/sys/vm/drop_caches"
+wsl -d docker-desktop -e "echo 1 > /proc/sys/vm/compact_memory"
+wsl -d docker-desktop-data -e "echo 1 > /proc/sys/vm/drop_caches"
+wsl -d docker-desktop-data -e "echo 1 > /proc/sys/vm/compact_memory"
 ```
 
 ## Configure Environment Variables
