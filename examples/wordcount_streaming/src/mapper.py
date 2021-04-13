@@ -5,6 +5,10 @@ import regex
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
+    # Update some counter from worker
+    # reporter:counter:<group>,<counter>,<amount>
+    sys.stderr.write('reporter:counter:Custom Counter,My Super INT Counter,1\n')
+
     # remove leading and trailing whitespace
     line = line.strip().lower()
     line = regex.sub(r'[\P{L}]', ' ', line)
