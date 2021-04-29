@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 
+import os
 import sys
 import regex
+
+# Get current file name
+sys.stderr.write(f'Current input file: {os.environ["mapreduce_map_input_file"]}\n')
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
