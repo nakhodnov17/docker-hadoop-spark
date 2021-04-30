@@ -23,6 +23,8 @@ Copy breweries.csv to HDFS:
   hdfs dfs -put breweries.csv /data/openbeer/breweries/breweries.csv
 ```
 
+See also: [python client for WebHDFS](examples/WebHDFS/python_client.py).
+
 ## Word count with Hadoop Streaming
 
 Move code and data to hadoop server
