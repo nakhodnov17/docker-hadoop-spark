@@ -12,7 +12,7 @@ WORKDIR /opt
 #Install Hive and PostgreSQL JDBC
 RUN apt-get update && apt-get install -y wget procps
 
-RUN wget http://apache.mirror.digionline.de/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
+RUN wget http://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
 RUN tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz
 RUN mv apache-hive-$HIVE_VERSION-bin hive
 RUN wget https://jdbc.postgresql.org/download/postgresql-$POSTGRES_VERSION.jar -O $HIVE_HOME/lib/postgresql-jdbc.jar
