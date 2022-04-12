@@ -20,7 +20,7 @@ for line in sys.stdin:
     except ValueError:
         # count was not a number, so silently
         # ignore/discard this line
-        sys.stderr.write(f'Illegel value: {count}')
+        sys.stderr.write(f'Illegal value: {count}')
         continue
 
     # this IF-switch only works because Hadoop sorts map output
