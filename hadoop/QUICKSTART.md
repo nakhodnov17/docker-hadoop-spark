@@ -42,3 +42,8 @@ Start hadoop streaming script:
   cd wordcount_streaming
   sh run_hadoop.sh
 ```
+
+Copy results from docker container:
+```shell
+  docker cp namenode:/wordcount_streaming/data/output examples/wordcount_streaming/data
+```
