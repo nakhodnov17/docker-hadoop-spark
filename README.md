@@ -28,7 +28,7 @@ Run `docker network inspect` on the network (e.g. `docker-hadoop-spark-hive_defa
 * `Namenode:` `localhost:9870`
 * `Nodemanager:` `localhost:8042`
 
-  
+
 * `History server`: `localhost:8188`
 * `Resource manager`: `localhost:8088`
 
@@ -44,14 +44,14 @@ You can add hosts mapping in your `hosts` file (`C:/Windows/System32/drivers/etc
 ```text
 <localhost-ip> localhost
 
-localhost datanode
-localhost namenode
-localhost nodemanager
-localhost historyserver
-localhost resourcemanager
+<localhost-ip> datanode
+<localhost-ip> namenode
+<localhost-ip> nodemanager
+<localhost-ip> historyserver
+<localhost-ip> resourcemanager
 ```
 
-If your docker gateway configured to map a local subnet to other ip replace `localhost` with `<your-dockerhadoop_IP_address>`.
+If your docker gateway configured to map a local subnet to other ip replace `<localhost-ip>` with `<your-dockerhadoop_IP_address>`.
 
 There some examples how to work on a server using:
 * [Hadoop](hadoop/QUICKSTART.md)
@@ -90,7 +90,7 @@ The configuration parameters can be specified in the hadoop.env file or as envir
   CORE_CONF_fs_defaultFS=hdfs://namenode:8020
 ```
 
-`CORE_CONF` corresponds to `core-site.xml`. 
+`CORE_CONF` corresponds to `core-site.xml`.
 
 So `CORE_CONF_fs_defaultFS=hdfs://namenode:8020` will be transformed into:
 ```xml
