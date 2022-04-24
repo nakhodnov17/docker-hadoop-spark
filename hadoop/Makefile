@@ -1,6 +1,6 @@
 DOCKER_NETWORK = docker-hadoop_default
 ENV_FILE = hadoop.env
-build_tag := 3.2.1
+build_tag := 3.3.1
 build:
 	docker build -t maksim64/hadoop-base:$(build_tag) ./base
 	docker build -t maksim64/hadoop-datanode:$(build_tag) ./datanode

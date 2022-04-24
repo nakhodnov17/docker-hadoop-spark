@@ -5,7 +5,7 @@ services:
 ########        Hadoop configuration        ########
 
   namenode:
-    image: maksim64/hadoop-namenode:3.2.1
+    image: maksim64/hadoop-namenode:3.3.1
     container_name: namenode
     build: hadoop/namenode
     restart: always
@@ -22,7 +22,7 @@ services:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
   datanode:
-    image: maskim64/hadoop-datanode:3.2.1
+    image: maskim64/hadoop-datanode:3.3.1
     container_name: datanode
     build: hadoop/datanode
     restart: always
@@ -38,7 +38,7 @@ services:
       CORE_CONF_fs_defaultFS: hdfs://namenode:9000
 
   resourcemanager:
-    image: maskim64/hadoop-resourcemanager:3.2.1
+    image: maskim64/hadoop-resourcemanager:3.3.1
     container_name: resourcemanager
     build: hadoop/resourcemanager
     restart: always
@@ -52,7 +52,7 @@ services:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
 
   nodemanager1:
-    image: maksim64/hadoop-nodemanager:3.2.1
+    image: maksim64/hadoop-nodemanager:3.3.1
     container_name: nodemanager
     build: hadoop/nodemanager
     restart: always
@@ -65,7 +65,7 @@ services:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
 
   historyserver:
-    image: maksim64/hadoop-historyserver:3.2.1
+    image: maksim64/hadoop-historyserver:3.3.1
     container_name: historyserver
     build: hadoop/historyserver
     restart: always
@@ -86,66 +86,66 @@ services:
     image: maskim64/spark-master:3.1.1
     container_name: spark-master
     build: spark/master
-    depends_on:
-      - namenode
-      - datanode
-    ports:
-      - "8080:8080"
-      - "7077:7077"
-    environment:
-      - INIT_DAEMON_STEP=setup_spark
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+   depends_on:
+     - namenode
+     - datanode
+   ports:
+     - "8080:8080"
+     - "7077:7077"
+   environment:
+     - INIT_DAEMON_STEP=setup_spark
+     - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
-  spark-worker-1:
-    image: maksim64/spark-worker:3.1.1
-    container_name: spark-worker-1
-    build: spark/worker
-    depends_on:
-      - spark-master
-    ports:
-      - "8081:8081"
-    environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+ spark-worker-1:
+   image: maksim64/spark-worker:3.1.1
+   container_name: spark-worker-1
+   build: spark/worker
+   depends_on:
+     - spark-master
+   ports:
+     - "8081:8081"
+   environment:
+     - "SPARK_MASTER=spark://spark-master:7077"
+     - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
 ########        Hive configuration        ########
 
-  hive-server:
-    image: maksim64/hive:2.3.8
-    container_name: hive-server
-    build: hive
-    depends_on:
-      - namenode
-      - datanode
-    ports:
-      - "10000:10000"
-      - "10002:10002"
-    env_file:
-      - ./hive/hive.env
-      - ./hadoop/hadoop.env
-    environment:
-      SERVICE_PRECONDITION: "hive-metastore:9083"
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+ hive-server:
+   image: maksim64/hive:2.3.8
+   container_name: hive-server
+   build: hive
+   depends_on:
+     - namenode
+     - datanode
+   ports:
+     - "10000:10000"
+     - "10002:10002"
+   env_file:
+     - ./hive/hive.env
+     - ./hadoop/hadoop.env
+   environment:
+     SERVICE_PRECONDITION: "hive-metastore:9083"
+     HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
 
 
-  hive-metastore:
-    image: maksim64/hive:2.3.8
-    container_name: hive-metastore
-    build: hive
-    command: /opt/hive/bin/hive --service metastore
-    ports:
-      - "9083:9083"
-    env_file:
-      - ./hive/hive.env
-      - ./hadoop/hadoop.env
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore-postgresql:5432"
+ hive-metastore:
+   image: maksim64/hive:2.3.8
+   container_name: hive-metastore
+   build: hive
+   command: /opt/hive/bin/hive --service metastore
+   ports:
+     - "9083:9083"
+   env_file:
+     - ./hive/hive.env
+     - ./hadoop/hadoop.env
+   environment:
+     SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore-postgresql:5432"
 
 
-  hive-metastore-postgresql:
-    image: maksim64/hive-metastore-postgresql:3.1.0
-    build: hive-metastore-postgresql
-    container_name: hive-metastore-postgresql
+ hive-metastore-postgresql:
+   image: maksim64/hive-metastore-postgresql:3.1.0
+   build: hive-metastore-postgresql
+   container_name: hive-metastore-postgresql
 
 ########        Presto configuration        ########
 

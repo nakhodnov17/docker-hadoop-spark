@@ -12,7 +12,6 @@ scikit-learn
 scikit-plot
 scipy
 seaborn
-spacy
 sparse
 statsmodels
 sympy

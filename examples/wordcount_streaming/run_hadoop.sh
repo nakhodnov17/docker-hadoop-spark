@@ -3,7 +3,7 @@ SOURCE_BASE_PATH="/wordcount_streaming"
 INPUT_HADOOP_DIR="/wordcount_streaming/input"
 OUTPUT_HADOOP_DIR="/wordcount_streaming/output"
 
-HADOOP_STREAMING_PATH="${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-streaming-3.2.1.jar"
+HADOOP_STREAMING_PATH="${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar"
 
 hdfs dfs -test -d ${INPUT_HADOOP_DIR}
 if [ $? -eq 0 ];

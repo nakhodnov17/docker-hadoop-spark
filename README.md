@@ -6,7 +6,7 @@ This is it: a Docker multi-container environment with Hadoop (HDFS), Spark and H
 
 First of all we need to build base images:
 ```shell
-docker build -t maksim64/hadoop-base:3.2.1 ./hadoop/base
+docker build -t maksim64/hadoop-base:3.3.1 ./hadoop/base
 docker build -t maksim64/spark-base:3.1.1 ./spark/base
 ```
 
