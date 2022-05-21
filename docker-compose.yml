@@ -86,17 +86,17 @@ services:
     image: maskim64/spark-master:3.1.1
     container_name: spark-master
     build: spark/master
-   depends_on:
+    depends_on:
      - namenode
      - datanode
-   ports:
+    ports:
      - "8080:8080"
      - "7077:7077"
-   environment:
+    environment:
      - INIT_DAEMON_STEP=setup_spark
      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
- spark-worker-1:
+  spark-worker-1:
    image: maksim64/spark-worker:3.1.1
    container_name: spark-worker-1
    build: spark/worker
@@ -110,7 +110,7 @@ services:
 
 ########        Hive configuration        ########
 
- hive-server:
+  hive-server:
    image: maksim64/hive:2.3.8
    container_name: hive-server
    build: hive
@@ -128,7 +128,7 @@ services:
      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
 
 
- hive-metastore:
+  hive-metastore:
    image: maksim64/hive:2.3.8
    container_name: hive-metastore
    build: hive
@@ -142,7 +142,7 @@ services:
      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore-postgresql:5432"
 
 
- hive-metastore-postgresql:
+  hive-metastore-postgresql:
    image: maksim64/hive-metastore-postgresql:3.1.0
    build: hive-metastore-postgresql
    container_name: hive-metastore-postgresql
