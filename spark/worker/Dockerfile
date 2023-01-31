@@ -1,4 +1,4 @@
-FROM maksim64/spark-base:3.1.1
+FROM maksim64/spark-base:3.3.1
 
 COPY worker.sh /
 
