@@ -1,4 +1,4 @@
-FROM maksim64/spark-submit:3.1.1
+FROM maksim64/spark-submit:3.5.6
 
 COPY template.sh /
 

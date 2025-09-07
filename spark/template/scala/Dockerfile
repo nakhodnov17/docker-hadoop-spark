@@ -1,4 +1,4 @@
-FROM maksim64/spark-submit:3.1.1
+FROM maksim64/spark-submit:3.5.6
 
 ARG SBT_VERSION
 ENV SBT_VERSION=${SBT_VERSION:-1.4.1}

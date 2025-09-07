@@ -44,7 +44,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS breweries(
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-location '/data/openbeer/breweries';
+location '/data/openbeer/breweries/';
 ```
 
 And have a little select statement going:

@@ -1,4 +1,4 @@
-FROM maksim64/spark-submit:3.1.1
+FROM maksim64/spark-submit:3.5.6
 
 ENV SPARK_APPLICATION_JAR_NAME application-1.0
 

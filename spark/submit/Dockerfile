@@ -1,4 +1,4 @@
-FROM maksim64/spark-base:3.1.1
+FROM maksim64/spark-base:3.5.6
 
 ENV SPARK_MASTER_NAME spark-master
 ENV SPARK_MASTER_PORT 7077

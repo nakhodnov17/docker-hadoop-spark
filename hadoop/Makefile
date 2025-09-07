@@ -1,6 +1,6 @@
 DOCKER_NETWORK = docker-hadoop_default
 ENV_FILE = hadoop.env
-build_tag := 3.2.1
+build_tag := 3.4.2
 build:
 	docker build -t maksim64/hadoop-base:$(build_tag) ./base
 	docker build -t maksim64/hadoop-datanode:$(build_tag) ./datanode
@@ -12,7 +12,7 @@ build:
 #wordcount:
 #	docker build -t hadoop-wordcount ./submit
 #	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} maksim64/hadoop-base:$(build_tag) hdfs dfs -mkdir -p /input/
-#	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} maksim64/hadoop-base:$(build_tag) hdfs dfs -copyFromLocal -f /opt/hadoop-3.2.1/README.txt /input/
+#	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} maksim64/hadoop-base:$(build_tag) hdfs dfs -copyFromLocal -f /opt/hadoop-3.4.2/README.txt /input/
 #	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} hadoop-wordcount
 #	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} maksim64/hadoop-base:$(build_tag) hdfs dfs -cat /output/*
 #	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} maksim64/hadoop-base:$(build_tag) hdfs dfs -rm -r /output

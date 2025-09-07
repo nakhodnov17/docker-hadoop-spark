@@ -1,4 +1,4 @@
-FROM maksim64/hadoop-base:3.2.1
+FROM maksim64/hadoop-base:3.4.2
 
 HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 

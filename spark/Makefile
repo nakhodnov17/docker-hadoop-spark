@@ -1,4 +1,4 @@
-build_tag := 3.1.1
+build_tag := 3.5.6
 build:
 	docker build -t maksim64/spark-base:$(build_tag) ./base
 	docker build -t maksim64/spark-master:$(build_tag) ./master

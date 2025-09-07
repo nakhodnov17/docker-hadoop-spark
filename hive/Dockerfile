@@ -1,4 +1,4 @@
-FROM maksim64/hadoop-base:3.2.1
+FROM maksim64/hadoop-base:3.4.2
 
 ENV HIVE_VERSION 2.3.8
 ENV POSTGRES_VERSION 42.2.19
