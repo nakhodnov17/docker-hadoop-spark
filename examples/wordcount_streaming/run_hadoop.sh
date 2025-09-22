@@ -27,7 +27,7 @@ if [ $? -eq 0 ];
 fi
 
 hdfs dfs -mkdir -p ${INPUT_HADOOP_DIR}
-hdfs dfs -copyFromLocal ${SOURCE_BASE_PATH}/data/input ${INPUT_HADOOP_DIR}
+hdfs dfs -copyFromLocal ${SOURCE_BASE_PATH}/data/input/* ${INPUT_HADOOP_DIR}
 
 chmod 0777 ${SOURCE_BASE_PATH}/src/mapper.py
 chmod 0777 ${SOURCE_BASE_PATH}/src/reducer.py
