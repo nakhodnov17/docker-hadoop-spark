@@ -35,7 +35,8 @@ chmod 0777 ${SOURCE_BASE_PATH}/src/reducer.py
 hadoop_streaming_arguments="\
   -D mapred.reduce.tasks=3 \
   -files ${SOURCE_BASE_PATH}/src  \
-  -mapper src/mapper.py -reducer src/reducer.py \
+  -mapper src/mapper.py \
+  -reducer src/reducer.py \
   -input ${INPUT_HADOOP_DIR}/* -output ${OUTPUT_HADOOP_DIR} \
 "
 
